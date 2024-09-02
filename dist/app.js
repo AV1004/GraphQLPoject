@@ -3,9 +3,12 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import dotenv from "dotenv";
 import { schema } from "./graphQL/schema.js";
+import { connectDB } from "./database/database.js";
 dotenv.config({ path: "./.env" });
 export const envMode = process.env.NODE_ENV?.trim() || "DEVELOPMENT";
 const port = Number(process.env.PORT) || 3000;
+const mongoURI = process.env.MONGO_URI;
+connectDB(mongoURI);
 // So first you need to made a server and configure it with 2 main properties of graphQL which is schemas and resolvers ,so you have to give schema (i.e typeDefs) as first agrument and resolvers as second argument.
 // Schema is structure of your data in backend
 // Resolvers is actual thing which returns somthing on call of queries from frontend
