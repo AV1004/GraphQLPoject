@@ -4,6 +4,7 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import dotenv from "dotenv";
 import { schema } from "./graphQL/schema.js";
 import { connectDB } from "./database/database.js";
+import { getAllUsers } from "./controllers/user.js";
 
 dotenv.config({ path: "./.env" });
 
@@ -22,6 +23,8 @@ const server = new ApolloServer({
   resolvers: {
     Query: {
       hello: () => "Hello World",
+      wow: () => "Wow1234",
+      users: () => getAllUsers(),
     },
   },
 });
