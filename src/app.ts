@@ -2,6 +2,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import dotenv from "dotenv";
+import { schema } from "./graphQL/schema.js";
 
 dotenv.config({ path: "./.env" });
 
@@ -12,7 +13,8 @@ const port = Number(process.env.PORT) || 3000;
 // Schema is structure of your data in backend
 // Resolvers is actual thing which returns somthing on call of queries from frontend
 const server = new ApolloServer({
-  typeDefs: `type Query { hello:String }`,
+  // typeDefs: `type Query { hello:String }`,
+  typeDefs: schema, //Here we just declare schema in other file for better code management
   resolvers: {
     Query: {
       hello: () => "Hello World",
