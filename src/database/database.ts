@@ -1,3 +1,4 @@
+// This function is use to connect with the database
 import mongoose from "mongoose";
 
 export const connectDB = (uri: string) =>
