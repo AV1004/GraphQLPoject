@@ -9,5 +9,3 @@ export const connectDB = (uri: string) =>
     .catch((e) => {
       console.log(e);
     });
-
-// HEllo
